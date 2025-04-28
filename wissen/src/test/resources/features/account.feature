@@ -14,3 +14,11 @@ Feature: Bank Account Management
     When I call GET /banking/121
     Then the response status empty should be 404
 
+    Scenario: Add account
+      Given I have the following bank details :
+      | customerName | accountNumber | balance |
+      | Alison dier | AC10121      | 10201021|
+      When I send this request to /insert with bank details
+      Then the response status should be 201
+      And the response should contain "AC10121"
+

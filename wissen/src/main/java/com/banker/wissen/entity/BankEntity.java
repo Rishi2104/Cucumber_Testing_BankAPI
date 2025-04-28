@@ -23,6 +23,16 @@ public class BankEntity {
         this.balance = balance;
     }
 
+    @Override
+    public String toString() {
+        return "BankEntity{" +
+                "custId=" + custId +
+                ", customerName='" + customerName + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
+
     public long getCustId() {
         return custId;
     }

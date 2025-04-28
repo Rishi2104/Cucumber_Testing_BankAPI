@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/banking")
@@ -31,8 +30,11 @@ public class BankController {
     }
 
     @PostMapping("/insert")
-    public BankEntity createBank(@RequestBody BankEntity bank) {
-        return bankService.createBank(bank);
+    public ResponseEntity<String> createBank(@RequestBody BankEntity bank) {
+        BankEntity bankEntity=bankService.createBank(bank);
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                bankEntity.getAccountNumber()+" has been added."
+        );
     }
 
     @PutMapping("/{id}")
